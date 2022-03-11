@@ -287,7 +287,7 @@ class AutoSchema(ViewInspector):
                     model_field = None
 
                 if model_field is not None and model_field.help_text:
-                    description = force_str(model_field.help_text)
+                    description = force_str(model_field.help_text) + ''
                 elif model_field is not None and model_field.primary_key:
                     description = get_pk_description(model, model_field)
 
@@ -535,7 +535,7 @@ class AutoSchema(ViewInspector):
             if field.default is not None and field.default != empty and not callable(field.default):
                 schema['default'] = field.default
             if field.help_text:
-                schema['description'] = str(field.help_text)
+                schema['description'] = str(field.help_text) + ''
             self.map_field_validators(field, schema)
 
             properties[field.field_name] = schema
